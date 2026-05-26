@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Deploy and build docker container in EC2
         uses: appleboy/ssh-action@v1.0.3
 
         with:
@@ -19,7 +19,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd aws-test-backend
+            cd docker-backend
             git pull origin main
-            npm install
-            pm2 restart aws-test-back
+            cd backend
+            docker build -t docker-app .
+            docker run -d -p 5000:5000 docker-app
