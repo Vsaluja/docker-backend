@@ -20,9 +20,7 @@ jobs:
 
           script: |
             cd docker-backend
-
             git pull origin main
-
             docker stop docker-container || true
             docker rm docker-container || true
 
