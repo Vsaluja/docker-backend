@@ -78,7 +78,7 @@ app.get("/api/products", (req, res) => {
 // Profile route
 app.get("/api/profile", (req, res) => {
   res.json({
-    name: "Jared",
+    name: "Vansh Saluja",
     profession: "Full Stack Developer",
     cloudLearning: true,
   });
