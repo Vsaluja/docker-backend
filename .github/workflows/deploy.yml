@@ -48,11 +48,11 @@ jobs:
             username: ${{ secrets.EC2_USERNAME }}
             key: ${{ secrets.EC2_SSH_KEY }}
 
-            script:
+            script: |
               cd docker-backend
               git pull origin main
               docker stop docker-container || true
               docker rm docker-container || true
-              docker build -t myapp .
+              docker build --no-cache -t myapp .
               docker run -d --name docker-container -p 5000:5000 myapp
 
